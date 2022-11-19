@@ -1,0 +1,15 @@
+{
+  "name": "gakubus-json2img",
+  "version": "0.1.0",
+  "description": "convert json of SIT schoolbus into image.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "saka",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "html-to-image": "^1.10.8"
+  }
+}
