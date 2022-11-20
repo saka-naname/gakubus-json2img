@@ -9,7 +9,7 @@
 
 */
 
-import parser from "./src/js/parser";
-import renderer from "./src/js/renderer";
+import * as Parser from "./src/js/parser";
+import * as Renderer from "./src/js/renderer";
 
-export { parser, renderer };
+export { Parser, Renderer };
