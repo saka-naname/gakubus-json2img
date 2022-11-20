@@ -1,0 +1,119 @@
+<table class="timesheet">
+    <tr class="bus-head-row">
+        <th class="bus-left">駅前発</th>
+        <th class="bus-time">時</th>
+        <th class="bus-right">校舎前発</th>
+    </tr>
+    <% data.ts.forEach(item => { %>
+        <tr class="bus-data-row">
+            <td class="bus-left">
+                <% if (item.bus_left.num1.length > 0) { %>
+                    <p class="numbers">
+                        <% item.bus_left.num1.forEach(num => { %>
+                            <span class="number"><%= num %></span>
+                        <% }) %>
+                    </p>
+                <% } %>
+                <% if (item.bus_left.memo1) { %>
+                    <p class="memo"><%= item.bus_left.memo1 %></p>
+                <% } %>
+                <% if (item.bus_left.num2.length > 0) { %>
+                    <p class="numbers"">
+                        <% item.bus_left.num2.forEach(num => { %>
+                            <span class="number"><%= num %></span>
+                        <% }) %>
+                    </p>
+                <% } %>
+                <% if (item.bus_left.memo2) { %>
+                    <p class="memo"><%= item.bus_left.memo2 %></p>
+                <% } %>
+                <% if (item.bus_left.num1.length + item.bus_left.num2.length === 0 && !item.bus_left.memo1 && !item.bus_left.memo2) { %>
+                    <p class="text-no-operation">運行なし</p>
+                <% } %>
+            </td>
+            <td class="bus-time"><%= item.time %></td>
+            <td class="bus-right">
+                <% if (item.bus_right.num1.length > 0) { %>
+                    <p class="numbers">
+                        <% item.bus_right.num1.forEach(num => { %>
+                            <span class="number"><%= num %></span>
+                        <% }) %>
+                    </p>
+                <% } %>
+                <% if (item.bus_right.memo1) { %>
+                    <p class="memo"><%= item.bus_right.memo1 %></p>
+                <% } %>
+                <% if (item.bus_right.num2.length > 0) { %>
+                    <p class="numbers">
+                        <% item.bus_right.num2.forEach(num => { %>
+                            <span class="number"><%= num %></span>
+                        <% }) %>
+                    </p>
+                <% } %>
+                <% if (item.bus_right.memo2) { %>
+                    <p class="memo"><%= item.bus_right.memo2 %></p>
+                <% } %>
+                <% if (item.bus_right.num1.length + item.bus_right.num2.length === 0 && !item.bus_right.memo1 && !item.bus_right.memo2) { %>
+                    <p class="text-no-operation">運行なし</p>
+                <% } %>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+<style>
+    .timesheet{
+        width: 1080px;
+        font-size: 48px;
+        border-collapse: collapse;
+        box-sizing: border-box;
+    }
+    .timesheet *{
+        margin: 0;
+        padding: 0;
+    }
+    .timesheet th, .timesheet td{
+        padding: 15px 0;
+    }
+    .bus-head-row{
+        border-bottom: 2px solid #000000;
+    }
+    .bus-data-row{
+        border-bottom: 2px solid #000000;
+    }
+    .timesheet td{
+        height: 1.5em;
+    }
+    .timesheet td.bus-left{
+        width: 45%;
+        text-align: right;
+        padding-right: 24px;
+    }
+    .timesheet td.bus-right{
+        width: 45%;
+        text-align: left;
+        padding-left: 24px;
+    }
+    .timesheet td.bus-time{
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.05em;
+        border-left: 2px dashed #000000;
+        border-right: 2px dashed #000000;
+    }
+    .bus-left .number{
+        margin-left: 0.5em;
+    }
+    .bus-right .number{
+        margin-right: 0.5em;
+    }
+    .bus-left .memo, .bus-right .memo{
+        color: #ee3630;
+        font-size: 0.75em;
+    }
+    .timesheet td.bus-left *:not(:last-child), .timesheet td.bus-right *:not(:last-child){
+        margin-bottom: 8px;
+    }
+    .text-no-operation{
+        color: rgba(0, 0, 0, 0.4);
+    }
+</style>

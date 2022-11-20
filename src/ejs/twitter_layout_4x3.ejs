@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <% let ts_ = data.json.timesheet[data.tsid]; %>
+        <h2><%= data.month + "月" + data.day + "日 学バス運行情報" %></h2>
+        <% if (ts_) { %>
+            <div class="text-container"><span><%= data.json.timesheet[data.tsid].title %></span></div>
+            <div class="text-container">
+                <span class="text1"><%= ts_.text1 %></span>
+                <span class="text2"><%= ts_.text2 %></span>
+            </div>
+        <% } %>
+    </header>
+    <article>
+        <div class="content">
+            <% if (data.ts.length > 0) { %>
+                <%- await include(content, data) %>
+            <% } else { %>     
+                <p class="text-no-data"><%= data.tsid === "none" ? "本日の運行はありません。" : "この時間の運行はありません。" %></p> 
+            <% } %>
+        </div>
+    </article>
+    <%- "<style>" %>
+        <%- await include("../css/twitter_layout_4x3.css") %>
+    <%- "</style>" %>
+</body>
+</html>
