@@ -1,8 +1,8 @@
-import ejs from "ejs";
-import nodeHtmlToImage from "node-html-to-image";
-import { parseSchoolbusJson, lookupTsId } from "./parser.js";
+const ejs = require("ejs");
+const nodeHtmlToImage = require("node-html-to-image");
+const { parseSchoolbusJson, lookupTsId } = require("./parser");
 
-export function renderBusTimesheet(parsedJsonData, month, day, start, end){
+function renderBusTimesheet(parsedJsonData, month, day, start, end){
     const tsId = lookupTsId(parsedJsonData, month, day);
     let ts = [];
     if(tsId !== "none"){
@@ -31,3 +31,5 @@ export function renderBusTimesheet(parsedJsonData, month, day, start, end){
         console.error(err);
     })
 }
+
+module.exports = { renderBusTimesheet };

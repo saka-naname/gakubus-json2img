@@ -9,7 +9,7 @@
 
 */
 
-import * as Parser from "./src/js/parser";
-import * as Renderer from "./src/js/renderer";
+const Parser = require("./src/js/parser");
+const Renderer = require("./src/js/renderer");
 
-export { Parser, Renderer };
+module.exports = { Parser, Renderer }

@@ -5,7 +5,7 @@
 //  湘南新宿ライン判定用
 const willJS = ["大", "逗"];
 
-export function parseSchoolbusJson(jsonData) {
+function parseSchoolbusJson(jsonData) {
     return new Promise((resolve) => {
         //  サイト設定
         let siteInfo = {};
@@ -74,7 +74,7 @@ export function parseSchoolbusJson(jsonData) {
     });
 }
 
-export function lookupTsId(parsedJsonData, month, day) {
+function lookupTsId(parsedJsonData, month, day) {
     let m = parsedJsonData.calendar.find(m => parseInt(m.month) === month);
     if (m) {
         let d = m.list.find(d => parseInt(d.day) === day);
@@ -87,3 +87,5 @@ export function lookupTsId(parsedJsonData, month, day) {
         return undefined;
     }
 }
+
+module.exports = { parseSchoolbusJson, lookupTsId };
